@@ -17,6 +17,7 @@ library("readr")
 
 #1.使用R中的数据读写，文件路径，for循环语句，读入路径“/assignment_idaccuracy/Aminer”总的所有文件，并将数据合并成为一个data.frame输出。
 ###(1)
+setwd(filepath)
 file_list <- list.files(pattern = ".csv")
 merged_data1 <- data.frame()
 # for循环读取文件并合并
@@ -24,6 +25,8 @@ for (w in dir(filepath)){
   file <- read.csv(paste(filepath,w,sep=''), header = TRUE)
   merged_data1 <- rbind(merged_data1,file)
 }
+getwd()
+setwd("D:/R_Project/bigdata/homework/homework2/")
 write.csv(merged_data1,file="merged_data1.csv",row.names = FALSE)
 
 ###(2)
@@ -48,7 +51,7 @@ mypath = "D:/bigdata/data/assignment_idaccuracy/Aminer/"
 file.exists(mypath)
 setwd(mypath)
 merged_data3 <- data.frame()
-merged_data3 <- do.call(rbind, lapply(file, read.csv))
+merged_data3 <- do.call(rbind, lapply(files, read.csv))
 #输出数据集
 getwd()
 setwd("D:/R_Project/bigdata/homework/homework2/")
